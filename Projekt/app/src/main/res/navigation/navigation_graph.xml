@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="de.hsfl.team.campusflag.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_start_to_create"
+            app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_start_to_join"
+            app:destination="@id/joinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="de.hsfl.team.campusflag.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" >
+        <action
+            android:id="@+id/action_create_to_lobby"
+            app:destination="@id/lobbyFragment" />
+        <action
+            android:id="@+id/action_create_to_start"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="de.hsfl.team.campusflag.JoinFragment"
+        android:label="fragment_join"
+        tools:layout="@layout/fragment_join" >
+        <action
+            android:id="@+id/action_join_to_lobby"
+            app:destination="@id/lobbyFragment" />
+        <action
+            android:id="@+id/action_join_to_start"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lobbyFragment"
+        android:name="de.hsfl.team.campusflag.LobbyFragment"
+        android:label="fragment_lobby"
+        tools:layout="@layout/fragment_lobby" >
+        <action
+            android:id="@+id/action_lobby_to_game"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_lobby_to_start"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="de.hsfl.team.campusflag.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_game_to_start"
+            app:destination="@id/startFragment" />
+    </fragment>
+</navigation>
