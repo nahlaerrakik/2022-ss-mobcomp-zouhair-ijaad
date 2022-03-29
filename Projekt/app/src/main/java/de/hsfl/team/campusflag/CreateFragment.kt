@@ -6,18 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CreateFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CreateFragment : Fragment() {
 
     private lateinit var rootView : View
@@ -30,9 +22,9 @@ class CreateFragment : Fragment() {
 
         //navigator ?
         val navController = findNavController()
-
-        var createGameBtn : Button = rootView.findViewById(R.id.creategame_btn_create)
-        var cancelBtn : Button = rootView.findViewById(R.id.cancel_btn_create)
+        val createGameBtn : Button = rootView.findViewById(R.id.creategame_btn_create)
+        val cancelBtn : Button = rootView.findViewById(R.id.cancel_btn_create)
+        val setFlagAtPositionBtn : Button = rootView.findViewById(R.id.setflagposition_btn_create)
 
         createGameBtn.setOnClickListener {
             navController.navigate(R.id.action_create_to_lobby)
@@ -40,6 +32,11 @@ class CreateFragment : Fragment() {
         cancelBtn.setOnClickListener {
             navController.navigate(R.id.action_create_to_start)
         }
+        setFlagAtPositionBtn.setOnClickListener {
+            Toast.makeText(rootView.context, "Setting the Flag at position.. ", Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
         return rootView

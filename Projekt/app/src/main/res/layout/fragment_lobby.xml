@@ -5,8 +5,8 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9E80"
-    tools:context=".LobbyFragment" >
+    android:background="@drawable/gradient_background"
+    tools:context=".LobbyFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -27,15 +27,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Game ID"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#29458A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     <Button
         android:id="@+id/start_game_btn_lobby"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:backgroundTint="#7FCD6A"
         android:text="Start Game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,13 +46,14 @@
 
     <Button
         android:id="@+id/leave_btn_lobby"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FF8A80"
         android:text="Leave"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_game_btn_lobby" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
@@ -57,6 +61,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Lobby Ansicht"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#232222"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

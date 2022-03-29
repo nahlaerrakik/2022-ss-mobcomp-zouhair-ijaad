@@ -12,10 +12,14 @@
         tools:layout="@layout/fragment_start" >
         <action
             android:id="@+id/action_start_to_create"
-            app:destination="@id/createFragment" />
+            app:destination="@id/createFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_start_to_join"
-            app:destination="@id/joinFragment" />
+            app:destination="@id/joinFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/createFragment"
@@ -24,10 +28,13 @@
         tools:layout="@layout/fragment_create" >
         <action
             android:id="@+id/action_create_to_lobby"
-            app:destination="@id/lobbyFragment" />
+            app:destination="@id/lobbyFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_create_to_start"
-            app:destination="@id/startFragment" />
+            app:destination="@id/startFragment"
+            app:popUpTo="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinFragment"
@@ -36,10 +43,13 @@
         tools:layout="@layout/fragment_join" >
         <action
             android:id="@+id/action_join_to_lobby"
-            app:destination="@id/lobbyFragment" />
+            app:destination="@id/lobbyFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_join_to_start"
-            app:destination="@id/startFragment" />
+            app:destination="@id/startFragment"
+            app:popUpTo="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/lobbyFragment"
@@ -48,10 +58,13 @@
         tools:layout="@layout/fragment_lobby" >
         <action
             android:id="@+id/action_lobby_to_game"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_lobby_to_start"
-            app:destination="@id/startFragment" />
+            app:destination="@id/startFragment"
+            app:popUpTo="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -60,6 +73,7 @@
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/action_game_to_start"
-            app:destination="@id/startFragment" />
+            app:destination="@id/startFragment"
+            app:popUpTo="@id/startFragment" />
     </fragment>
 </navigation>

@@ -5,25 +5,29 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A7FFEB"
-    tools:context=".StartFragment" >
+    android:background="@drawable/gradient_background"
+    tools:context=".StartFragment">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="128dp"
         android:text="CatchTheFlage Game"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#DA32302C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/host_btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#8C9EFF"
         android:text="Host Game"
+        android:textColor="#454040"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,10 +36,12 @@
 
     <Button
         android:id="@+id/join_btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-150dp"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="-200dp"
+        android:backgroundTint="#B9F6CA"
         android:text="Join Game"
+        android:textColor="#2C2929"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

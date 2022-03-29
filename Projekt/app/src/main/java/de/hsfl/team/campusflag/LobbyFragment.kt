@@ -31,7 +31,7 @@ class LobbyFragment : Fragment() {
         }
 
         startBtn.setOnClickListener {
-            //Toast.makeText(rootView.context, "Hello!! button Clicked", Toast.LENGTH_SHORT).show();
+
             navController.navigate(R.id.action_lobby_to_game)
         }
 
