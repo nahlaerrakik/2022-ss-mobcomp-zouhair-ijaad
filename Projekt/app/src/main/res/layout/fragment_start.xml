@@ -13,9 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="176dp"
+        android:layout_marginBottom="20dp"
         android:text="CatchTheFlage Game"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#DA32302C"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/host_btn_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,19 +38,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.449" />
 
-    <Button
-        android:id="@+id/join_btn_start"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="-100dp"
-        android:backgroundTint="#B9F6CA"
-        android:text="Join Game"
-        android:textColor="#2C2929"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/host_btn_start" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="128dp"
@@ -57,4 +47,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/startpagelogo" />
+
+    <Button
+        android:id="@+id/join_btn_start"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#B9F6CA"
+        android:text="Join Game"
+        android:textColor="#2C2929"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/host_btn_start" />
 </androidx.constraintlayout.widget.ConstraintLayout>
