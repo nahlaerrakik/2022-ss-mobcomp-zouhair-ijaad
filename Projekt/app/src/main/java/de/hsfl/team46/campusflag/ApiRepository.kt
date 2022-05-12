@@ -52,7 +52,7 @@ class ApiRepository(application: Application) {
                         null,
                     ),
                     null,
-                    JSONObject()
+                    null
                 ))
                 Log.d("GAME FROM REPOSI", it.toString())
             },
@@ -105,15 +105,12 @@ class ApiRepository(application: Application) {
 
     fun fetchPlayersFromAPI(game: Game, callback: (Game) -> (Unit)) {
 
-        val url = "https://ctf.letorbi.de/game/players"
+        val url = "https://ctf.letorbi.de/players"
 
         val objectauth = JSONObject(
             mapOf(
                 "game" to game.game,
-                "auth" to mapOf(
-                    "name" to game.host!!.name,
-                    "token" to game.host.token
-                )
+                "auth" to mapOf("name" to game.host!!.name, "token" to game.host.token)
             )
         )
 
@@ -128,9 +125,9 @@ class ApiRepository(application: Application) {
                         null,
                         null,
                         null,
-                        null,
+                        game.host,
                         it.getInt("state"),
-                        it.getJSONObject("""{"players":}""")
+                        it.getJSONArray("players")
                     )
                 )
                 Log.d("FETCH PLAYERS---------------->         ", it.toString())

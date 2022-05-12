@@ -41,14 +41,13 @@ class LobbyyFragment : Fragment() {
 //            layoutManager = manager
 //
 //        }
-        var Players =  Timer().scheduleAtFixedRate(timerTask {
-            mainViewModel.fetchPlayers()
-        },2000,2)
 
-        binding.fetchPlayersBtnLobby.setOnClickListener {
-            Players.toString()
-            Log.e("HA LFETCH MEN DAK L PLAYERS DIAL LOBBY",Players.toString())
-        }
+        Timer().scheduleAtFixedRate(timerTask {
+            mainViewModel.fetchPlayers()
+        },10000,2)
+//        binding.fetchPlayersBtnLobby.setOnClickListener {
+//            val players =
+//        }
 
         binding.startGameBtnLobby.setOnClickListener {
             findNavController().navigate(R.id.action_lobbyy_to_game)

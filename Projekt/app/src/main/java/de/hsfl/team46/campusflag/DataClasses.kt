@@ -11,7 +11,7 @@ data class Game(
     , val teamTwo: Team?
     , val host: Player?
     , val state: Int?
-    , val players: JSONObject?
+    , val players: JSONArray?
     )
 
 data class Team (
@@ -29,7 +29,6 @@ data class Player (
     )
 
 //data class Player (val game: Int?, val name : String, val isHost : Boolean?)
-
 
 // data class Game : gameId, Host, MutableList<Player> , state
 

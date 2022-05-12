@@ -5,6 +5,7 @@ import android.text.Editable
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import org.json.JSONArray
 import org.json.JSONObject
 
 class ViewModel (application: Application) : AndroidViewModel(application) {
@@ -39,7 +40,7 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
             gameId.value = s.toString().toInt()
         }
     }
-    var playersTest = JSONObject()
+
     fun createGame() {
         Log.d("--------------------------haaa hostname", hostname.value.toString())
         Log.d("--------------------------haaa hostplayer", hostPlayer.value?.name.toString())
@@ -51,10 +52,6 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
             null,
             null
         )
-        playersTest.opt(postHostName)
-        Log.e("--------------------------haaa playersTest.opt(postHostName)", playersTest.toString())
-
-//        val players = JSONObject("""{"player":"$postHostName"}""")
         val game = hostPlayer.value?.let {
             Game(
                 gameId.value,
@@ -63,7 +60,7 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
                 null,
                 it,
                 null,
-                playersTest,
+                null
             )
         }
 
@@ -73,7 +70,6 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
                     gameId.value = it.game
                     hostname.value = it.host?.name
                     hostPlayer.value = it.host
-                    playersTest.put("player",hostPlayer)
 
                     Log.d("GAME RESPONSE FROM VIEWMODEL", it.toString())
                     Log.d("***************gameId", gameId.value.toString())
@@ -101,9 +97,6 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
         apiRepository.joinGame(playerPost) {
             gameId.value = it.game
 //          hostname.value = it.host.name
-            playersTest.opt(playerPost.toString())
-            Log.e("--------------------------haaasssssssss playersTest.opt(postHostName)", playersTest.toString())
-
         }
 
     }
@@ -121,7 +114,8 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
                 null,
                 hostPlayer.value!!,
                 null,
-                null,
+                null
+
             )
         }
 
