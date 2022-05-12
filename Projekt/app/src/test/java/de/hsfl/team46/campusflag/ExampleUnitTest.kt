@@ -1,4 +1,4 @@
-package de.hsfl.team.campusflag
+package de.hsfl.team46.campusflag
 
 import org.junit.Test
 

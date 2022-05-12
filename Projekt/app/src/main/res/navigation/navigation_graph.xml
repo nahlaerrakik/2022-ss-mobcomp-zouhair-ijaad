@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="de.hsfl.team.campusflag.StartFragment"
+        android:name="de.hsfl.team46.campusflag.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -23,57 +23,53 @@
     </fragment>
     <fragment
         android:id="@+id/createFragment"
-        android:name="de.hsfl.team.campusflag.CreateFragment"
+        android:name="de.hsfl.team46.campusflag.CreateFragment"
         android:label="fragment_create"
         tools:layout="@layout/fragment_create" >
-        <action
-            android:id="@+id/action_create_to_lobby"
-            app:destination="@id/lobbyFragment"
-            app:popUpTo="@id/startFragment"
-            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_create_to_start"
             app:destination="@id/startFragment"
             app:popUpTo="@id/startFragment" />
+        <action
+            android:id="@+id/action_create_lobbyy"
+            app:destination="@id/lobbyyFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinFragment"
-        android:name="de.hsfl.team.campusflag.JoinFragment"
+        android:name="de.hsfl.team46.campusflag.JoinFragment"
         android:label="fragment_join"
         tools:layout="@layout/fragment_join" >
-        <action
-            android:id="@+id/action_join_to_lobby"
-            app:destination="@id/lobbyFragment"
-            app:popUpTo="@id/startFragment"
-            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_join_to_start"
             app:destination="@id/startFragment"
             app:popUpTo="@id/startFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/lobbyFragment"
-        android:name="de.hsfl.team.campusflag.LobbyFragment"
-        android:label="fragment_lobby"
-        tools:layout="@layout/fragment_lobby" >
         <action
-            android:id="@+id/action_lobby_to_game"
-            app:destination="@id/gameFragment"
-            app:popUpTo="@id/startFragment"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_lobby_to_start"
-            app:destination="@id/startFragment"
-            app:popUpTo="@id/startFragment" />
+            android:id="@+id/action_join_to_lobbyy"
+            app:destination="@id/lobbyyFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="de.hsfl.team.campusflag.GameFragment"
+        android:name="de.hsfl.team46.campusflag.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/action_game_to_start"
             app:destination="@id/startFragment"
             app:popUpTo="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lobbyyFragment"
+        android:name="de.hsfl.team46.campusflag.LobbyyFragment"
+        android:label="fragment_lobbyy"
+        tools:layout="@layout/fragment_lobbyy" >
+        <action
+            android:id="@+id/action_lobbyy_to_start"
+            app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_lobbyy_to_game"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_lobbyyFragment_to_startFragment2"
+            app:destination="@id/startFragment" />
     </fragment>
 </navigation>

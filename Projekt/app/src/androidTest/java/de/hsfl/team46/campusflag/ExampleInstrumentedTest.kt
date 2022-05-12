@@ -1,4 +1,4 @@
-package de.hsfl.team.campusflag
+package de.hsfl.team46.campusflag
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

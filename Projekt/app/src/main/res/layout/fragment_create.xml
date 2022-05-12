@@ -1,102 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/frameLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    tools:context=".CreateFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:freezesText="false"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:singleLine="false"
-        android:text="Name"
-        android:textAllCaps="false"
-        android:textColor="#605959"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/setflagposition_btn_create"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <data>
+        <variable name="viewModel" type="de.hsfl.team46.campusflag.ViewModel" />
+    </data>
 
-    <Button
-        android:id="@+id/setflagposition_btn_create"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="#FAD103"
-        android:text="Set Flag at Position"
-        android:textColor="#494343"
-        app:layout_constraintBottom_toTopOf="@+id/creategame_btn_create"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frameLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            tools:context=".CreateFragment">
 
-    <Button
-        android:id="@+id/creategame_btn_create"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="#7FCD6A"
-        android:text="Create Game"
-        app:layout_constraintBottom_toTopOf="@+id/cancel_btn_create"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setflagposition_btn_create" />
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:freezesText="false"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:singleLine="false"
+                android:afterTextChanged="@{viewModel::setHostPlayer}"
+                android:text="@{viewModel.hostPlayer.name}"
+                android:textAllCaps="false"
+                android:textColor="#605959"
+                android:textColorHint="#000000"
+                app:layout_constraintBottom_toTopOf="@+id/setflagposition_btn_create"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/cancel_btn_create"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#FF8A80"
-        android:text="Cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creategame_btn_create" />
+            <Button
+                android:id="@+id/setflagposition_btn_create"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#FAD103"
+                android:text="Set Flag at Position"
+                android:textColor="#494343"
+                app:layout_constraintBottom_toTopOf="@+id/creategame_btn_create"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Create Ansicht"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#131313"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/karte_campus_create" />
+            <Button
+                android:id="@+id/creategame_btn_create"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#7FCD6A"
+                android:text="Create Game"
+                app:layout_constraintBottom_toTopOf="@+id/cancelBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/setflagposition_btn_create" />
 
-    <ImageView
-        android:id="@+id/karte_campus_create"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/campuskarte"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/cancelBtn"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#FF8A80"
+                android:text="Cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/creategame_btn_create" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Create Ansicht"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#131313"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/karte_campus_create" />
+
+            <ImageView
+                android:id="@+id/karte_campus_create"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/campuskarte"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+</layout>

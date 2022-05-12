@@ -1,13 +1,23 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
+
 
 android {
     compileSdk 32
 
+//    buildFeatures {
+//        viewBinding true
+//    }
+
+    // DATA-VIEW BINDING IMPORT
+    buildFeatures.dataBinding = true
+    buildFeatures.viewBinding = true
+
     defaultConfig {
-        applicationId "de.hsfl.team.campusflag"
+        applicationId 'de.hsfl.team46.campusflag'
         minSdk 26
         targetSdk 32
         versionCode 1
@@ -15,6 +25,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+
 
     buildTypes {
         release {
@@ -50,4 +62,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     // Recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    // Volley
+    implementation "com.android.volley:volley:1.2.1"
+
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
 }
