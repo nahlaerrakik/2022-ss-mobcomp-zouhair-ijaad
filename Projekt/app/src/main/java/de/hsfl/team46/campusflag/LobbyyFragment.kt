@@ -44,10 +44,8 @@ class LobbyyFragment : Fragment() {
 
         Timer().scheduleAtFixedRate(timerTask {
             mainViewModel.fetchPlayers()
-        },90000,2)
-//        binding.fetchPlayersBtnLobby.setOnClickListener {
-//            val players =
-//        }
+        },0,10000)
+
 
         binding.startGameBtnLobby.setOnClickListener {
             findNavController().navigate(R.id.action_lobbyy_to_game)

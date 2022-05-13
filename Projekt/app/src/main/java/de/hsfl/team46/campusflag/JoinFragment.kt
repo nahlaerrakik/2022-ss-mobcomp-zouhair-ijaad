@@ -30,8 +30,11 @@ class JoinFragment : Fragment() {
         binding.viewModel = mainViewModel
 
         binding.joinGameBtnJoin.setOnClickListener {
-            mainViewModel.joinGame()
-            findNavController().navigate(R.id.action_join_to_lobbyy)
+            mainViewModel.joinGame { isError ->
+                if (!isError){
+                    findNavController().navigate(R.id.action_join_to_lobbyy)
+                }
+            }
         }
 
         binding.cancelBtnJoin.setOnClickListener {

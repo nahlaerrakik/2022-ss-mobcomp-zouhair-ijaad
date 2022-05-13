@@ -100,7 +100,10 @@ class ApiRepository(application: Application) {
                 Log.d("GAME JOIN", it.toString())
             },
             {
-                Log.e("ApiRepository", it.toString())
+                Log.e("ApiRepository", it.networkResponse.data.decodeToString())
+                callback(
+                    Player(null, null, null, null,null)
+                )
             }
         )
 

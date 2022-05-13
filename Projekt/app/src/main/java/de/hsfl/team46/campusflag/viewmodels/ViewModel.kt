@@ -3,6 +3,7 @@ package de.hsfl.team46.campusflag.viewmodels
 import android.app.Application
 import android.text.Editable
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import de.hsfl.team46.campusflag.model.Game
@@ -76,7 +77,7 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun joinGame() {
+    fun joinGame(callback: (Boolean) -> (Unit)) {
         Log.d("-------------------------- -> JOINED PLAYER :", player.value.toString())
 
         val playerPost = Player(
@@ -87,8 +88,15 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
             null
         )
 
-        apiRepository.joinGame(playerPost) {
-            gameId.value = it.game
+        apiRepository.joinGame(playerPost){
+            if(it.token == null){
+                Toast.makeText(getApplication(), "Name already exists",
+                    Toast.LENGTH_LONG).show()
+                callback(true)
+            }
+            else{
+                callback(false)
+            }
         }
 
     }
