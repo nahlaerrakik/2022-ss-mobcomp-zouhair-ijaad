@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import de.hsfl.team46.campusflag.databinding.RecyclerPlayersBinding
+import de.hsfl.team46.campusflag.model.Player
 
 
 class RecyclerViewAdapter(private val data : List<Player>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>()  {

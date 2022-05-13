@@ -1,8 +1,6 @@
-package de.hsfl.team46.campusflag
+package de.hsfl.team46.campusflag.model
 
 import org.json.JSONArray
-import org.json.JSONObject
-
 
 data class Game(
     val game: Int?
@@ -12,13 +10,7 @@ data class Game(
     , val host: Player?
     , val state: Int?
     , val players: JSONArray?
-    )
-
-data class Team (
-    val players: MutableList<Player>
-    , val id : Int
-    , val color : String
-    )
+)
 
 data class Player (
     val game: Int?
@@ -28,10 +20,13 @@ data class Player (
     , val addr : String?
     )
 
-//data class Player (val game: Int?, val name : String, val isHost : Boolean?)
+data class Team (
+     val id : Int
+    , val color : String
+)
+
 
 // data class Game : gameId, Host, MutableList<Player> , state
 
-// date class Host : gameId, name, tokenHost, addr, team
+// date class Player :  name, tokenPlayer, addr, team, IsHost
 
-// date class Player : gameId, name, tokenPlayer, addr, team

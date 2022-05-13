@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import de.hsfl.team46.campusflag.databinding.FragmentCreateBinding
+import de.hsfl.team46.campusflag.viewmodels.ViewModel
 
 class CreateFragment : Fragment() {
 

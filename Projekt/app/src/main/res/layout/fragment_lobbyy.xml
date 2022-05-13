@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="viewModel" type="de.hsfl.team46.campusflag.ViewModel" />
+        <variable name="viewModel" type="de.hsfl.team46.campusflag.viewmodels.ViewModel" />
     </data>
 
     <FrameLayout

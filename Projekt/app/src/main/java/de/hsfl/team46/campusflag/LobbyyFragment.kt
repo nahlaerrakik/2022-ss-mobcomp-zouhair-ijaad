@@ -1,7 +1,6 @@
 package de.hsfl.team46.campusflag
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import de.hsfl.team46.campusflag.databinding.FragmentLobbyyBinding
+import de.hsfl.team46.campusflag.viewmodels.ViewModel
 import java.util.*
 import kotlin.concurrent.timerTask
 
@@ -44,7 +44,7 @@ class LobbyyFragment : Fragment() {
 
         Timer().scheduleAtFixedRate(timerTask {
             mainViewModel.fetchPlayers()
-        },10000,2)
+        },90000,2)
 //        binding.fetchPlayersBtnLobby.setOnClickListener {
 //            val players =
 //        }

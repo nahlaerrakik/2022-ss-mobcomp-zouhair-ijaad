@@ -4,7 +4,7 @@
     <data>
         <variable
             name="listItem"
-            type="de.hsfl.team46.campusflag.Player" />
+            type="de.hsfl.team46.campusflag.model.Player" />
     </data>
 
     <LinearLayout

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import de.hsfl.team46.campusflag.databinding.FragmentJoinBinding
-
+import de.hsfl.team46.campusflag.viewmodels.ViewModel
 
 
 class JoinFragment : Fragment() {
