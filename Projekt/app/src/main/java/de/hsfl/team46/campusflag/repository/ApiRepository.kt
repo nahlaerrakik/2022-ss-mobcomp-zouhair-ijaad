@@ -6,8 +6,12 @@ import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import de.hsfl.team46.campusflag.model.Game
+import de.hsfl.team46.campusflag.model.Host
 import de.hsfl.team46.campusflag.model.Player
+import de.hsfl.team46.campusflag.model.Position
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -17,46 +21,34 @@ class ApiRepository(application: Application) {
         private var instance: ApiRepository? = null
 
         fun getInstance(application: Application) = instance ?: ApiRepository(application)
-
     }
 
     private val requestQueue = Volley.newRequestQueue(application)
 
-    fun postGame(game: Game, player: Player, callback: (Game) -> (Unit)) {
-
+    fun postGame(host: Host, points:  Array<Position>, callback: (Host) -> (Unit)) {
         val url = "https://ctf.letorbi.de/game/register"
 
         val `object` = JSONObject()
 
         try {
             //input the API parameters
-            `object`.put("name", player.name)
-            `object`.put("points", "")
+            `object`.put("name", host.name)
+            `object`.put("points", JSONArray(Gson().toJson(points)))
         } catch (e: JSONException) {
             Log.e(ContentValues.TAG, "problem occurred !!!!!!!!!!!!!!!!!! ")
             e.printStackTrace()
         }
 
-        Log.d("ApiRepository", "posting Ressource")
+        Log.d("ApiRepository", "posting Resource")
         val req = JsonObjectRequest(
             Request.Method.POST, url, `object`,
             {
                 callback(
-                    Game(
-                    it.getInt("game"),
-                    it.getString("token"),
-                    null,
-                    null,
-                    Player(
+                    Host(
                         it.getInt("game"),
                         it.getString("name"),
-                        null,
-                        it.getString("token"),
-                        null,
-                    ),
-                    null,
-                    null
-                )
+                        it.getString("token")
+                    )
                 )
                 Log.d("SUCCESS -> GAME FROM ApiRepository", it.toString())
             },
@@ -110,17 +102,16 @@ class ApiRepository(application: Application) {
         requestQueue.add(req)
     }
 
-    fun fetchPlayersFromAPI(game: Game, callback: (Game) -> (Unit)) {
+    fun getGamePlayers(gameId: Int, name: String, token: String, callback: (Game) -> (Unit)) {
 
         val url = "https://ctf.letorbi.de/players"
 
         val objectauth = JSONObject(
             mapOf(
-                "game" to game.game,
-                "auth" to mapOf("name" to game.host!!.name, "token" to game.host.token)
+                "game" to gameId,
+                "auth" to mapOf("name" to name, "token" to token)
             )
         )
-
 
         val req = JsonObjectRequest(
             Request.Method.POST, url, (objectauth),
@@ -128,15 +119,11 @@ class ApiRepository(application: Application) {
                 callback(
                     Game(
                         it.getInt("game"),
-                        null,
-                        null,
-                        null,
-                        game.host,
                         it.getInt("state"),
                         it.getJSONArray("players")
                     )
                 )
-                Log.d("FETCH PLAYERS---------------->         ", it.toString())
+                Log.d("FETCH PLAYERS---------------->", it.toString())
             },
             {
                 Log.e("ApiRepository", it.toString())
@@ -144,7 +131,6 @@ class ApiRepository(application: Application) {
         )
 
         requestQueue.add(req)
-
     }
 
 }

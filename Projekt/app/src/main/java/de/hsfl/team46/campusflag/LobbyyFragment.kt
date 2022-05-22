@@ -33,15 +33,6 @@ class LobbyyFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = mainViewModel
 
-//        manager = LinearLayoutManager(context)
-//        var data = listOf(Player(24911,"wa7da",1,null,null),
-//                            Player(24911,"tania",2,null,null))
-//        binding.recyclerView.apply {
-//            adapter = RecyclerViewAdapter(data)
-//            layoutManager = manager
-//
-//        }
-
         Timer().scheduleAtFixedRate(timerTask {
             mainViewModel.fetchPlayers()
         },0,10000)
@@ -54,19 +45,6 @@ class LobbyyFragment : Fragment() {
         binding.leaveBtnLobby.setOnClickListener {
             findNavController().navigate(R.id.action_lobbyyFragment_to_startFragment2)
         }
-
-//        val delay = 0 // delay for 0 sec.
-//
-//        val period = 10000 // repeat every 10 sec.
-//
-//        val timer = Timer()
-//        timer.scheduleAtFixedRate(object : TimerTask() {
-//            fun run() {
-//                //Call function
-//            }
-//        }, delay, period)
-
-
 
         return binding.root
     }

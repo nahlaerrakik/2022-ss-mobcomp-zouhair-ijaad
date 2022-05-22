@@ -13,10 +13,12 @@
         android:layout_width="407dp"
         android:layout_height="281dp"
         android:layout_marginTop="150dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/leave_btn_game"

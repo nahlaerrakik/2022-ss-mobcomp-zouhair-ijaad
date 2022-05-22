@@ -40,7 +40,7 @@
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:afterTextChanged="@{viewModel::setPlayer}"
-            android:text="@{viewModel.player}"
+            android:text="@{viewModel.player.name}"
             android:textColor="#7E7E7E"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

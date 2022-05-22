@@ -30,8 +30,8 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:singleLine="false"
-                android:afterTextChanged="@{viewModel::setHostPlayer}"
-                android:text="@{viewModel.hostPlayer.name}"
+                android:afterTextChanged="@{viewModel::setHost}"
+                android:text="@{viewModel.host.name}"
                 android:textAllCaps="false"
                 android:textColor="#605959"
                 android:textColorHint="#000000"
@@ -105,6 +105,18 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/positionMarker"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="fitCenter"
+                android:translationX="-10dp"
+                android:translationY="-10dp"
+                app:layout_constraintStart_toStartOf="@id/karte_campus_create"
+                app:layout_constraintTop_toTopOf="@id/karte_campus_create"
+                app:srcCompat="@android:drawable/ic_menu_mylocation"
+                app:tint="#FF0303" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
