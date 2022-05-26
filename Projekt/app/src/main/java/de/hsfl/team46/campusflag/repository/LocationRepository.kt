@@ -62,12 +62,11 @@ class LocationRepository : LocationListener {
                         MIN_TIME_BW_UPDATES.toLong(),
                         MIN_DISTANCE_CHANGE_FOR_UPDATES.toFloat(), this
                     )
-                    Log.d("Network", "Network")
+//                    Log.d("Network", "Network")
 
                     loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
                     if (loc != null) {
-                        Log.d(TAG,"getCurrentLocation: " + loc.latitude.toString() + ", " + loc.longitude)
-
+//                        Log.d(TAG,"getCurrentLocation: " + loc.latitude.toString() + ", " + loc.longitude)
                         return loc
                     }
                 }
@@ -88,7 +87,7 @@ class LocationRepository : LocationListener {
                         MIN_TIME_BW_UPDATES.toLong(),
                         MIN_DISTANCE_CHANGE_FOR_UPDATES.toFloat(), this
                     )
-                    Log.d("GPS Enabled", "GPS Enabled")
+//                    Log.d("GPS Enabled", "GPS Enabled")
 
                     loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 

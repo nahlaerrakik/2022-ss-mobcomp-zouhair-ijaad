@@ -16,6 +16,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import de.hsfl.team46.campusflag.databinding.FragmentCreateBinding
+import de.hsfl.team46.campusflag.enums.Colors
 import de.hsfl.team46.campusflag.model.Host
 import de.hsfl.team46.campusflag.viewmodels.ViewModel
 
@@ -62,6 +63,8 @@ class CreateFragment : Fragment() {
         }
 
         displayCurrentLocation()
+
+        binding.positionMarker.setColorFilter(Colors.RED.rgb)
 
         return binding.root
     }

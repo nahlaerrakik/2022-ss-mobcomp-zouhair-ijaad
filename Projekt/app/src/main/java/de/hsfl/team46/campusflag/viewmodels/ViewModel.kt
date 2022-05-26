@@ -7,13 +7,15 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import de.hsfl.team46.campusflag.model.Host
-import de.hsfl.team46.campusflag.model.Player
-import de.hsfl.team46.campusflag.model.Position
+import com.google.gson.Gson
+import de.hsfl.team46.campusflag.model.*
 import de.hsfl.team46.campusflag.repository.ApiRepository
 import de.hsfl.team46.campusflag.repository.LocationRepository
 
 class ViewModel (application: Application) : AndroidViewModel(application) {
+    private val TOP_LEFT_COORDS = Position(54.778514, 9.442749)
+    private val BOTTOM_RIGHT_COORDS = Position(54.769009, 9.464722)
+
     private val apiRepository = ApiRepository.getInstance(getApplication())
     private val locationRepository = LocationRepository()
 
@@ -38,6 +40,12 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
         gameId.value = s
     }
 
+    private val game: MutableLiveData<Game> = MutableLiveData()
+    fun getGame(): MutableLiveData<Game> = game
+    fun setGame(s: Game){
+        game.value = s
+    }
+
     private var player: MutableLiveData<Player> = MutableLiveData()
     fun getPlayer() : MutableLiveData<Player> = player
     fun setPlayer(s: Editable){
@@ -56,8 +64,15 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
 
     var currentHostFlagPositions: Array<Position> = arrayOf()
     fun setCurrentHostFlagPositions(location: Position) {
-        Log.d("-------------------------- -> setCurrentHostFlagPositions:", location.toString())
         currentHostFlagPositions = arrayOf(location)
+    }
+
+    var points: MutableLiveData<List<Point>> = MutableLiveData()
+
+    private val pcolor: MutableLiveData<String> = MutableLiveData("#FF0303")
+    fun getPcolor() : MutableLiveData<String> = pcolor
+    fun setPcolor(s: String){
+        pcolor.value = s
     }
 
     fun getLocationRepository() : LocationRepository = locationRepository
@@ -67,12 +82,12 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
         apiRepository.postGame(host.value!!, currentHostFlagPositions) {
             host.value = it
             gameId.value = it.game
+            game.value = Game(it.game, null, null, null)
             callback(it.game!!)
         }
     }
 
     fun joinGame(callback: (Boolean) -> (Unit)) {
-        Log.d("-------------------------- -> JOINED PLAYER :", player.value.toString())
         player.value!!.game = gameId.value
 
         apiRepository.joinGame(player.value!!){
@@ -94,7 +109,8 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
                 gameId.value!!,
                 host.value!!.name!!,
                 host.value!!.token!!) {
-                Log.d("-------------------------- -> ALL PLAYERS ", it.toString())
+                game.value!!.players = it.players
+                Log.d("Fetch Players", it.toString())
             }
         }
         else{
@@ -102,8 +118,63 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
                 gameId.value!!,
                 player.value!!.name!!,
                 player.value!!.token!!) {
-                Log.d("-------------------------- -> ALL PLAYERS ", it.toString())
+                game.value!!.players = it.players
+                Log.d("Fetch Players", it.toString())
             }
         }
+    }
+
+    fun fetchPoints(callback: (Game) -> (Unit)){
+        if (host.value != null){
+            apiRepository.getGamePoints(
+                gameId.value!!,
+                host.value!!.name!!,
+                host.value!!.token!!) {
+                game.value!!.points = it.points
+                points.value = it.points!!
+                callback(
+                    it
+                )
+            }
+        }
+        else {
+            apiRepository.getGamePoints(
+                gameId.value!!,
+                player.value!!.name!!,
+                player.value!!.token!!) {
+                game.value!!.points = it.points
+                points.value = it.points!!
+                callback(
+                    it
+                )
+            }
+        }
+    }
+
+    fun removePlayer(callback: (Boolean) -> (Unit)) {
+        if (player.value != null){
+            apiRepository.removePlayer(player.value!!){
+                if(it.status == -1){
+                    Toast.makeText(getApplication(), it.message,
+                        Toast.LENGTH_LONG).show()
+                    player.value = null
+                    callback(true)
+                }
+                else{
+                    callback(false)
+                }
+            }
+        }
+        else{
+            callback(false)
+        }
+    }
+
+    fun getLatScaling(lat:Double): Double {
+        return (lat - TOP_LEFT_COORDS.lat) / (BOTTOM_RIGHT_COORDS.lat - TOP_LEFT_COORDS.lat)
+    }
+
+    fun getLongScaling(long:Double): Double {
+        return (long - TOP_LEFT_COORDS.long) / (BOTTOM_RIGHT_COORDS.long - TOP_LEFT_COORDS.long)
     }
 }

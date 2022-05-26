@@ -43,7 +43,11 @@ class LobbyyFragment : Fragment() {
         }
 
         binding.leaveBtnLobby.setOnClickListener {
-            findNavController().navigate(R.id.action_lobbyyFragment_to_startFragment2)
+            mainViewModel.removePlayer { isError ->
+                if (!isError){
+                    findNavController().navigate(R.id.action_lobbyyFragment_to_startFragment2)
+                }
+            }
         }
 
         return binding.root

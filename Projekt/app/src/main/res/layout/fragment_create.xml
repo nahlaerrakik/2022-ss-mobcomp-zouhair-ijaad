@@ -115,8 +115,7 @@
                 android:translationY="-10dp"
                 app:layout_constraintStart_toStartOf="@id/karte_campus_create"
                 app:layout_constraintTop_toTopOf="@id/karte_campus_create"
-                app:srcCompat="@android:drawable/ic_menu_mylocation"
-                app:tint="#FF0303" />
+                app:srcCompat="@android:drawable/ic_menu_mylocation" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
